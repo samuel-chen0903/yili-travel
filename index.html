@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新疆伊犁环线 · 10日天山秘境自驾路书</title>
+<style>
+  :root {
+    --primary: #1a6b4e;
+    --primary-light: #e8f5e9;
+    --accent: #d4922b;
+    --bg: #f9fafb;
+    --card: #fff;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --border: #e0e0e0;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    --radius: 14px;
+    --tag-bg: #e8f5e9;
+    --tag-text: #1a6b4e;
+    --danger-bg: #fff3f0;
+    --danger-text: #c0392b;
+    --info-bg: #e3f2fd;
+    --info-text: #1565c0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #0d4a30 0%, #1a6b4e 40%, #2e8b57 70%, #3cb371 100%);
+    color: #fff;
+    padding: 48px 16px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60%; left: -30%;
+    width: 160%; height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero h1 {
+    font-size: clamp(24px, 5vw, 38px);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .hero .subtitle {
+    font-size: 15px;
+    opacity: 0.85;
+    position: relative;
+  }
+  .hero .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 24px;
+    position: relative;
+  }
+  .hero .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    opacity: 0.9;
+  }
+  .hero .meta-item .icon { font-size: 18px; }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  /* Tabs */
+  .tabs-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs {
+    display: flex;
+    gap: 0;
+    min-width: max-content;
+    padding: 0 8px;
+  }
+  .tabs button {
+    flex-shrink: 0;
+    border: none;
+    background: none;
+    padding: 14px 20px;
+    font-size: 14px;
+    color: var(--text-light);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+  .tabs button:hover { color: var(--primary); }
+  .tabs button.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+    font-weight: 600;
+  }
+
+  /* Sections */
+  .section {
+    display: none;
+    padding: 28px 0 40px;
+  }
+  .section.active { display: block; }
+
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+  .section-desc {
+    color: var(--text-light);
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+  }
+  .card h3 {
+    font-size: 17px;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .card-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .card-grid-2 .card { min-height: 0; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  th, td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+  }
+  th {
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  td { vertical-align: top; }
+
+  /* Tags */
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .tag-green { background: var(--tag-bg); color: var(--tag-text); }
+  .tag-orange { background: #fff8e1; color: #f57c00; }
+  .tag-red { background: var(--danger-bg); color: var(--danger-text); }
+  .tag-blue { background: var(--info-bg); color: var(--info-text); }
+
+  /* Timeline / Day Plan */
+  .day-plan {
+    border-left: 3px solid var(--primary);
+    padding-left: 20px;
+    margin-left: 8px;
+  }
+  .day-plan .stop {
+    position: relative;
+    padding: 10px 0 10px 16px;
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+  .day-plan .stop::before {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 17px;
+    width: 10px;
+    height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  .day-plan .stop.time-label {
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 15px;
+  }
+  .day-plan .stop.time-label::before {
+    background: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary);
+    width: 14px; height: 14px;
+    left: -30px;
+    top: 16px;
+  }
+
+  /* Route badge */
+  .route-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #f0fdf4;
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 4px 0;
+  }
+
+  /* Budget bar */
+  .budget-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0;
+  }
+  .budget-bar .label { width: 70px; font-size: 13px; color: var(--text-light); flex-shrink: 0; }
+  .budget-bar .bar-wrap { flex: 1; background: #eee; border-radius: 6px; height: 8px; overflow: hidden; }
+  .budget-bar .bar { height: 100%; border-radius: 6px; background: var(--primary); }
+  .budget-bar .amount { font-size: 13px; font-weight: 600; width: 90px; text-align: right; flex-shrink: 0; }
+
+  /* Alert box */
+  .alert {
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    font-size: 14px;
+  }
+  .alert-warn { background: #fff8e1; border: 1px solid #ffcc02; color: #7a5900; }
+  .alert-info { background: var(--info-bg); border: 1px solid #bbdefb; color: var(--info-text); }
+  .alert-danger { background: var(--danger-bg); border: 1px solid #ffcdd2; color: var(--danger-text); }
+
+  /* Weather */
+  .weather-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  .weather-card {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .weather-card .loc { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+  .weather-card .temp { font-size: 28px; font-weight: 700; color: var(--primary); }
+  .weather-card .range { font-size: 13px; color: var(--text-light); }
+  .weather-card .icon { font-size: 32px; margin: 6px 0; }
+
+  /* Checklist */
+  .checklist { list-style: none; }
+  .checklist li {
+    padding: 6px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .checklist li::before {
+    content: '☐ ';
+    color: var(--text-light);
+    font-size: 15px;
+  }
+
+  /* QR / map placeholder */
+  .map-hint {
+    background: #f0fdf4;
+    border: 2px dashed #a3d9b1;
+    border-radius: var(--radius);
+    padding: 18px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--primary);
+    margin: 16px 0;
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .hero { padding: 36px 16px 44px; }
+    .hero h1 { font-size: 22px; }
+    .card { padding: 16px; }
+    th, td { padding: 8px 6px; font-size: 12px; }
+    .card-grid { grid-template-columns: 1fr; }
+    .card-grid-2 { grid-template-columns: 1fr; }
+    .hero .meta-row { gap: 14px; }
+  }
+
+  /* Number highlight */
+  .num-highlight {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  /* Divider */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 24px 0;
+  }
+  /* 住宿规划表格列宽 */
+  .hotel-table th:nth-child(1),
+  .hotel-table td:nth-child(1) { width: 175px; white-space: nowrap; }
+  .hotel-table th:nth-child(2),
+  .hotel-table td:nth-child(2) { width: 160px; white-space: nowrap; }
+  .hotel-table th:nth-child(3),
+  .hotel-table td:nth-child(3) { width: 170px; white-space: normal; word-break: break-all; }
+  .hotel-table th:nth-child(4),
+  .hotel-table td:nth-child(4) { width: 80px; white-space: nowrap; }
+  .hotel-table th:nth-child(5),
+  .hotel-table td:nth-child(5) { width: 75px; white-space: nowrap; }
+  .hotel-table th:nth-child(6),
+  .hotel-table td:nth-child(6) { width: 90px; white-space: nowrap; }
+  .hotel-table th:nth-child(7),
+  .hotel-table td:nth-child(7) { width: 75px; white-space: nowrap; }
+  .hotel-table th:nth-child(8),
+  .hotel-table td:nth-child(8) { width: 80px; white-space: nowrap; }
+  .hotel-table th:nth-child(9),
+  .hotel-table td:nth-child(9) { width: 70px; white-space: nowrap; }
+  .hotel-table th:nth-child(10),
+  .hotel-table td:nth-child(10) { width: 170px; white-space: normal; }
+
+  /* 游玩项目汇总交替行色 */
+  .activity-table tbody tr:nth-child(odd) { background: #ffffff; }
+  .activity-table tbody tr:nth-child(even) { background: #eff6ff; }
+
+  /* 今日重点卡片 */
+  .highlight-card {
+    background: #f0fdf4;
+    color: var(--text);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+  }
+  .highlight-card h3 {
+    color: var(--text);
+    margin: 0 0 8px 0;
+    font-size: 17px;
+  }
+  .highlight-card .highlight-sub {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .highlight-card .hl-section {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid #d1fae5;
+  }
+  .highlight-card .hl-section-title {
+    color: #166534;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .highlight-card .hl-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+    line-height: 2;
+    color: var(--text);
+  }
+  .highlight-card .hl-list li {
+    padding-left: 18px;
+    position: relative;
+  }
+  .highlight-card .hl-list li::before {
+    content: "🟢";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 10px;
+  }
+  .highlight-card .hl-tips {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--text);
+  }
+  .highlight-card .hl-tips strong {
+    color: #166534;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>🏔️ 新疆伊犁环线 · 天山秘境自驾路书</h1>
+  <div class="subtitle">北京 ⇢ 兰州 ⇢ 伊宁 · 夏塔古道 · 库尔德宁 · 赛里木湖</div>
+  <div class="meta-row">
+    <div class="meta-item"><span class="icon">📅</span> 2026.8.14 — 8.24</div>
+    <div class="meta-item"><span class="icon">👥</span> 4大1小（老人67/69岁 · 孩子11岁）</div>
+    <div class="meta-item"><span class="icon">🚗</span> 落地自驾 · 逆时针环线</div>
+    <div class="meta-item"><span class="icon">🏔️</span> 伊昭公路 + 天山腹地</div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-wrap">
+  <div class="tabs" id="tabBar">
+    <button class="active" data-tab="overview">📋 游玩概览</button>
+    <button data-tab="day1">D1 8.14</button>
+    <button data-tab="day2">D2 8.15</button>
+    <button data-tab="day3">D3 8.16</button>
+    <button data-tab="day4">D4 8.17</button>
+    <button data-tab="day5">D5 8.18</button>
+    <button data-tab="day6">D6 8.19</button>
+    <button data-tab="day7">D7 8.20</button>
+    <button data-tab="day8">D8 8.21</button>
+    <button data-tab="day9">D9 8.22</button>
+    <button data-tab="day10">D10 8.23</button>
+    <button data-tab="day11">D11 8.24</button>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+<!-- ======== OVERVIEW ======== -->
+<section class="section active" id="sec-overview">
+
+  <h2 class="section-title">🌍 总体情况</h2>
+  <p class="section-desc">一趟横跨华北→西北→天山的家庭深度自驾之旅</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <h3>🗺️ 路线概览</h3>
+      <div style="font-size:14px;line-height:2;">
+        <strong>北京西</strong> <span style="color:#999;">→G351高铁 6h43m→</span> <strong>兰州西</strong>
+        <br><span style="color:#999;">兰州游玩1天</span>
+        <br><strong>兰州中川</strong> <span style="color:#999;">→✈ 3h40m→</span> <strong>伊宁</strong>
+        <br><strong>伊宁</strong> <span style="color:#999;">→伊昭公路→</span> <strong>昭苏/夏塔</strong>
+        <br><strong>夏塔</strong> <span style="color:#999;">→</span> <strong>特克斯</strong> <span style="color:#999;">→恰甫其海→</span> <strong>库尔德宁</strong>
+        <br><strong>库尔德宁</strong> <span style="color:#999;">→</span> <strong>赛里木湖</strong> <span style="color:#999;">→</span> <strong>伊宁</strong>
+        <br><strong>伊宁</strong> <span style="color:#999;">→✈→</span> <strong>兰州</strong> <span style="color:#999;">→G674→</span> <strong>北京西</strong>
+      </div>
+      <div style="margin-top:12px;">
+        <span class="tag tag-green">全程约 2,500 km</span>
+        <span class="tag tag-blue">逆时针环线</span>
+        <span class="tag tag-orange">极少回头路</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>👥 同行信息</h3>
+      <table>
+        <tr><td style="font-weight:600;white-space:nowrap;">人数</td><td>5人（4名成人 + 1名11岁儿童）</td></tr>
+        <tr><td style="font-weight:600;white-space:nowrap;">老人</td><td>67岁、69岁 — 行程以观光为主，避免剧烈徒步</td></tr>
+        <tr><td style="font-weight:600;white-space:nowrap;">孩子</td><td>11岁 — 推荐骑马体验、草原奔跑</td></tr>
+        <tr><td style="font-weight:600;white-space:nowrap;">车辆</td><td>建议租7座SUV（伊昭公路限7座以下）</td></tr>
+        <tr><td style="font-weight:600;white-space:nowrap;">风格</td><td>自然风光为主，慢节奏，带老人孩子友好</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>🌳 行程概览</h3>
+      <div style="font-family:monospace;font-size:13px;line-height:2;">
+        <strong>D1-D2</strong> <span style="color:#999;">兰州</span> 黄河铁桥/白塔山/正宁路<br>
+        <strong>D3</strong> <span style="color:#999;">伊昭公路</span> 白石峰→昭苏<br>
+        <strong>D4</strong> <span style="color:#999;">夏塔</span> 古道徒步/玉湖<br>
+        <strong>D5</strong> <span style="color:#999;">特克斯</span> 八卦城/恰甫其海<br>
+        <strong>D6-D7</strong> <span style="color:#999;">库尔德宁</span> 云杉森林/观景台<br>
+        <strong>D7</strong> <span style="color:#999;">霍尔果斯</span> 口岸/清水河<br>
+        <strong>D8</strong> <span style="color:#999;">赛里木湖</span> 环湖/果子沟<br>
+        <strong>D9</strong> <span style="color:#999;">伊宁</span> 六星街/喀赞其/伊犁河<br>
+        <strong>D10-D11</strong> <span style="color:#999;">返程</span> ✈伊宁→兰州→🚄北京
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h2 class="section-title">💰 费用预算</h2>
+  <p class="section-desc">5人总预算约 ¥27,200–36,600，人均约 ¥5,440–7,320（不含购物）</p>
+
+  <div class="card">
+    <table>
+      <thead><tr><th>类别</th><th>明细</th><th>人均</th><th>合计</th></tr></thead>
+      <tbody>
+        <tr><td><strong>大交通</strong></td><td>G351北京→兰州 ¥550-650/人 ×5；G674兰州→北京 ¥550-650/人 ×5</td><td>¥1,100–1,300</td><td>¥5,500–6,500</td></tr>
+        <tr><td><strong>机票</strong></td><td>兰州⇌伊宁往返 ¥800–1,500/人 ×2程 ×5人</td><td>¥1,600–3,000</td><td>¥8,000–15,000</td></tr>
+        <tr><td><strong>租车</strong></td><td>7座GL8（含全险）8/16–8/21 共6天</td><td>¥382</td><td>¥1,910</td></tr>
+        <tr><td><strong>油费+过路费</strong></td><td>新疆段约1,500km，约¥1,500–2,000</td><td>¥300–400</td><td>¥1,500–2,000</td></tr>
+        <tr><td><strong>住宿</strong></td><td>10晚，以民宿为主</td><td>¥788</td><td>¥3,940</td></tr>
+        <tr><td><strong>门票</strong></td><td>夏塔¥90 + 库尔德宁¥60×2 + 赛里木湖¥145 + 其他</td><td>约¥450</td><td>¥2,250</td></tr>
+        <tr><td><strong>餐饮</strong></td><td>9天 × ¥80–100/人/天（含特色餐）</td><td>¥720–900</td><td>¥3,600–4,500</td></tr>
+        <tr><td><strong>骑马等体验</strong></td><td>夏塔骑马约¥80–120/小时/人 ×3人</td><td>约¥100</td><td>¥500</td></tr>
+        <tr style="font-weight:700;background:#f0fdf4;"><td><strong>总计</strong></td><td></td><td>约 ¥5,440–7,320</td><td>约 ¥27,200–36,600</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <h2 class="section-title">🎯 游玩项目汇总</h2>
+  <p class="section-desc">按日期罗列全程所有游玩内容，方便核对与预算</p>
+
+  <div class="card" style="overflow-x:auto;">
+    <table class="activity-table" style="min-width:900px;font-size:13px;">
+      <thead><tr><th>日期</th><th>地点</th><th>景点</th><th>游玩项目</th><th>游玩时间</th><th>费用（5人合计）</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr><td>8.14</td><td>兰州</td><td>正宁路夜市</td><td>夜市CityWalk</td><td>1.5小时</td><td>约¥200（餐饮）</td><td>尝牛肉面、甜醅、羊肉串</td></tr>
+        <tr><td>8.15</td><td>兰州</td><td>黄河风情线</td><td>中山桥+白塔山+黄河母亲雕塑</td><td>3小时</td><td>免费</td><td>中山桥可步行过河</td></tr>
+        <tr><td>8.15</td><td>兰州</td><td>甘肃省博物馆</td><td>马踏飞燕+丝路文明展</td><td>2小时</td><td>免费（需预约）</td><td>老人免预约，带身份证</td></tr>
+        <tr><td>8.15</td><td>兰州</td><td>南关民族风味街</td><td>夜市美食</td><td>1.5小时</td><td>约¥250（餐饮）</td><td>炒拨拉、甜醅、羊肉泡馍</td></tr>
+        <tr><td>8.16</td><td>昭苏</td><td>伊昭公路</td><td>沿途风光+白石峰</td><td>2小时</td><td>免费</td><td>GL8可以走，9:00后通行</td></tr>
+        <tr><td>8.17</td><td>昭苏</td><td>夏塔古道景区</td><td>区间车+徒步/骑马</td><td>4小时</td><td>¥450（门票+区间车）+ ¥400–600（骑马）</td><td>无线上预约，早到抢马！</td></tr>
+        <tr><td>8.17</td><td>昭苏</td><td>昭苏玉湖</td><td>自驾环湖+拍照</td><td>1.5小时</td><td>¥100/车（自驾票）</td><td>海拔2200m，湖水碧绿如玉</td></tr>
+        <tr><td>8.17</td><td>特克斯</td><td>八卦城+离街</td><td>CityWalk+摩天轮</td><td>2小时</td><td>摩天轮¥30/人（可选）</td><td>登太极坛俯瞰八卦布局</td></tr>
+        <tr><td>8.18</td><td>特克斯→恰甫其海→库尔德宁</td><td>恰甫其海</td><td>湖边拍照+休憩</td><td>1小时</td><td>免费</td><td>伊犁河谷"蓝宝石"，无景区围栏</td></tr>
+        <tr><td>8.18</td><td>库尔德宁</td><td>库尔德宁景区</td><td>云杉林+草原徒步</td><td>3小时</td><td>¥300（门票×5）</td><td>门票当日有效，老人可能有优惠</td></tr>
+        <tr><td>8.19</td><td>库尔德宁</td><td>库尔德宁景区</td><td>全天深度游+齐梦德观景台</td><td>6小时</td><td>¥300（门票×5，次日重购）</td><td>早上晨雾最美，备好防风外套</td></tr>
+        <tr><td>8.20</td><td>清水河镇</td><td>霍尔果斯口岸</td><td>国门景区+中哈合作中心</td><td>3小时</td><td>¥150（国门门票×5）+ ¥75（通行证×5）</td><td>身份证即可办通行证，不一定要护照</td></tr>
+        <tr><td>8.21</td><td>赛里木湖</td><td>赛里木湖景区</td><td>南门进+顺时针环湖</td><td>4小时</td><td>¥725（门票×5，自驾环湖）</td><td>顶门进！8:30前到，人最少光线最好</td></tr>
+        <tr><td>8.21</td><td>果子沟</td><td>果子沟大桥</td><td>观景台拍照</td><td>0.5小时</td><td>免费</td><td>⚠️ 桥面严禁停车，去指定观景台</td></tr>
+        <tr><td>8.21</td><td>伊宁</td><td>六星街</td><td>CityWalk+手风琴博物馆</td><td>2小时</td><td>免费</td><td>古兰丹姆冰淇淋¥10/球</td></tr>
+        <tr><td>8.22</td><td>伊宁</td><td>喀赞其民俗区</td><td>蓝色童话小镇CityWalk</td><td>2小时</td><td>免费（哈迪克马车¥20–30/人可选）</td><td>蓝墙花窗超上镜，老人可坐马车</td></tr>
+        <tr><td>8.22</td><td>伊宁</td><td>伊犁河大桥</td><td>看日落</td><td>1小时</td><td>免费</td><td>日落约21:00，提前半小时到</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <h2 class="section-title">🏨 住宿规划</h2>
+  <p class="section-desc">预算人均 ¥150/晚，优先选择民宿</p>
+
+  <div class="card" style="overflow-x:auto;">
+    <table class="hotel-table" style="min-width:900px;font-size:13px;">
+      <thead><tr><th>日期</th><th>住宿地</th><th>地址</th><th>类型</th><th>单价</th><th>房型</th><th>天数</th><th>总价</th><th>平台</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr><td>8.14–8.15<br><span style="font-size:11px;color:#999;">取消 8.14 00:00前</span></td><td>兰语·悠居</td><td>兰州七里河区兰石小区五区-91栋柳家营95号1单元219</td><td>民宿</td><td>¥325</td><td>2室2卫</td><td>2晚</td><td>¥650</td><td>携程</td><td>西站附近，打车前往town</td></tr>
+        <tr><td>8.16<br><span style="font-size:11px;color:#999;">取消 8.13 00:00前</span></td><td>昭苏朴宿微澜民宿(夏塔景区店)</td><td>夏特柯尔克孜族乡文化街</td><td>客栈</td><td>¥440</td><td>双床房</td><td>1晚</td><td>¥880</td><td>飞猪</td><td>8点顶门进，观光车+骑马or徒步</td></tr>
+        <tr><td>8.17<br><span style="font-size:11px;color:#999;">取消 8.17 18:00前</span></td><td>特克斯归城小居房</td><td>特克斯县幸福里小区4号楼1单元301</td><td>民宿</td><td>¥281</td><td>3室1卫</td><td>1晚</td><td>¥281</td><td>携程</td><td>距离中心环岛近</td></tr>
+        <tr><td>8.18–8.19<br><span style="font-size:11px;color:#999;">取消 8.17 18:00前</span></td><td>库尔德宁镇 · 篝火欢歌花园民宿</td><td>巩留X737东辉商店西北200米</td><td>客栈</td><td>¥271</td><td>双床房</td><td>2晚</td><td>¥989</td><td>携程</td><td>景区门口民宿，第二日一早进去</td></tr>
+        <tr><td>8.20<br><span style="font-size:11px;color:#999;">取消 8.20 18:00前</span></td><td>霍城县疆屿民宿</td><td>清水河镇新华北路12巷6号</td><td>民宿</td><td>¥304</td><td>3室1卫</td><td>1晚</td><td>¥304</td><td>携程</td><td>第二天早晨前往赛里木湖、果子沟大桥</td></tr>
+        <tr><td>8.21–8.22<br><span style="font-size:11px;color:#999;">取消 8.21 18:00前</span></td><td>豪华三卧公寓</td><td>伊宁市建业·云境11号楼2单元601</td><td>民宿</td><td>¥283</td><td>3室2卫</td><td>2晚</td><td>¥566</td><td>携程</td><td>伊宁市中心位置，去喀赞其、六星街很近</td></tr>
+        <tr><td>8.23<br><span style="font-size:11px;color:#999;">取消 8.23 12:00前</span></td><td>兰州西站祥云之家</td><td>兰州七里河区天河苑4号楼</td><td>民宿</td><td>¥270</td><td>2室1卫</td><td>1晚</td><td>¥270</td><td>携程</td><td>第二天西站坐高铁返京</td></tr>
+      </tbody>
+      <tfoot><tr style="background:#f8fafc;font-weight:700;border-top:2px solid #e2e8f0;"><td></td><td colspan="5" style="text-align:right;padding-right:12px;">合计</td><td>10晚</td><td>¥3,940</td><td colspan="2"></td></tr></tfoot>
+    </table>
+  </div>
+
+  <div class="alert alert-info">
+    <strong>⚠️ 关于库尔德宁景区内住宿：</strong>景区核心区禁止游客自行露营过夜（世界自然遗产保护），门票当日有效。
+    但紧邻景区（10-20分钟车程）的<strong>库尔德宁镇</strong>和<strong>柏睿营地</strong>（齐梦德观景台旁）有小木屋、帐篷民宿可选，
+    2晚深度游完全可行。建议提前至少1周预订。
+  </div>
+
+  <hr class="divider">
+
+  <h2 class="section-title">🌤️ 8月天气与穿搭</h2>
+  <p class="section-desc">伊犁8月：盛夏避暑天堂，但温差极大</p>
+
+  <div class="weather-grid">
+    <div class="weather-card">
+      <div class="loc">伊宁市区</div>
+      <div class="icon">☀️</div>
+      <div class="temp">30°C</div>
+      <div class="range">18°C ~ 32°C</div>
+      <div style="font-size:12px;color:#999;">干热，紫外线强</div>
+    </div>
+    <div class="weather-card">
+      <div class="loc">昭苏/夏塔</div>
+      <div class="icon">⛅</div>
+      <div class="temp">23°C</div>
+      <div class="range">10°C ~ 26°C</div>
+      <div style="font-size:12px;color:#999;">凉爽，偶有阵雨</div>
+    </div>
+    <div class="weather-card">
+      <div class="loc">特克斯</div>
+      <div class="icon">☀️</div>
+      <div class="temp">27°C</div>
+      <div class="range">12°C ~ 30°C</div>
+      <div style="font-size:12px;color:#999;">干燥，昼夜温差大</div>
+    </div>
+    <div class="weather-card">
+      <div class="loc">赛里木湖</div>
+      <div class="icon">🌤️</div>
+      <div class="temp">18°C</div>
+      <div class="range">9°C ~ 25°C</div>
+      <div style="font-size:12px;color:#999;">海拔2000m+，风大凉</div>
+    </div>
+    <div class="weather-card">
+      <div class="loc">库尔德宁</div>
+      <div class="icon">🌲</div>
+      <div class="temp">24°C</div>
+      <div class="range">11°C ~ 28°C</div>
+      <div style="font-size:12px;color:#999;">森林气候，湿润清新</div>
+    </div>
+  </div>
+
+  <div class="alert alert-warn" style="margin-top:16px;">
+    <strong>🧥 穿搭法则：洋葱式穿搭是铁律！</strong> 早晚需薄羽绒服/冲锋衣，中午穿短袖+防晒衣。
+    鞋子务必防滑舒适（夏塔徒步、库尔德宁栈道）。必备：墨镜、宽檐帽、高倍防晒霜、润唇膏。
+  </div>
+
+  <hr class="divider">
+
+  <h2 class="section-title">⚠️ 重要注意事项</h2>
+
+  <div class="card">
+    <ul class="checklist">
+      <li><strong>身份证</strong>：全程随身携带，新疆安检频繁</li>
+      <li><strong>伊昭公路</strong>：仅7座以下车辆可通行，8:00-20:00开放，山路多弯小心驾驶</li>
+      <li><strong>夏塔古道</strong>：旺季建议9:00前到景区，需提前关注「智游昭苏」或「新疆昭苏夏塔景区」公众号预约门票</li>
+      <li><strong>夏塔骑马</strong>：无线上预约！需到现场马队服务点排队，先到先得，9:30前赶到马队成功率最高</li>
+      <li><strong>赛里木湖</strong>：门票建议提前1天在小程序购买；建议东门进顺时针环湖，松树头可避开人流</li>
+      <li><strong>库尔德宁</strong>：门票当日有效，次日需重新购票；上午10点前入园光线最佳</li>
+      <li><strong>加油提醒</strong>：伊昭公路沿途无加油站，出伊宁前务必加满油</li>
+      <li><strong>离线地图</strong>：山区信号弱，出发前下载新疆离线地图</li>
+      <li><strong>老人注意</strong>：夏塔海拔约2,000-2,500m，轻微高反属正常现象，备好氧气瓶；台阶多路段量力而行</li>
+      <li><strong>外套随身</strong>：山区天气多变，即使晴天也备一件防风外套在车上</li>
+      <li><strong>食品补给</strong>：伊昭公路和部分山区路段几乎无餐饮，在出发城镇备足水和干粮</li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+
+  <h2 class="section-title">🚁 无人机飞行指南</h2>
+  <div class="card">
+    <div style="font-size:14px;margin-bottom:16px;">
+      <strong>📋 行前必做：</strong>UOM平台实名登记（机身贴二维码）· 购买第三方责任险 · 安装大疆FlySafe查限飞
+    </div>
+    <div style="font-family:monospace;font-size:13px;line-height:2.2;display:grid;grid-template-columns:1fr 1fr;gap:0 32px;">
+      <div>
+        <strong>D2 兰州</strong><br>
+        ├─ ✅ 黄河铁桥/白塔山：可飞，限高120m<br>
+        ├─ ✅ 读者博物馆：市区空旷区可飞<br>
+        └─ ⚠️ 远离人群头顶，避开机场净空区<br><br>
+        <strong>D3 伊昭公路</strong><br>
+        ├─ 🚫 <span style="color:#c0392b">全程禁飞</span>（战备公路+军事区）<br>
+        └─ 📷 用手机/运动相机替代拍摄<br><br>
+        <strong>D4 夏塔古道</strong><br>
+        ├─ ⚠️ 需游客中心现场报备<br>
+        ├─ ✅ 峡谷开阔区可飞，限高120m<br>
+        └─ ⚠️ 海拔2000-2500m，风力大注意续航<br><br>
+        <strong>D5 特克斯</strong><br>
+        ├─ ✅ 八卦城/离街：非禁飞区谨慎飞行<br>
+        ├─ ✅ 恰甫其海：开阔水域可飞，限高120m<br>
+        └─ ⚠️ 远离人群密集区
+      </div>
+      <div>
+        <strong>D6-D7 库尔德宁</strong><br>
+        ├─ ✅ 云杉森林/观景台：开阔区可飞<br>
+        ├─ ⚠️ 限高120m，远离野生动植物<br>
+        └─ ⚠️ 山区信号弱，保持视距内飞行<br><br>
+        <strong>D7 霍尔果斯口岸</strong><br>
+        ├─ 🚫 <span style="color:#c0392b">口岸核心区绝对禁飞</span><br>
+        └─ 🚫 边境管控区5km内禁止飞行<br><br>
+        <strong>D8 赛里木湖</strong><br>
+        ├─ ✅ 需提前报备（公众号"西域赛湖"）<br>
+        ├─ ✅ 推荐点：松树头/点将台/月亮湾<br>
+        ├─ 🚫 禁飞：游客中心/鸟岛上空<br>
+        └─ ⚠️ 湖面瞬时风力5-6级，强风天禁飞<br><br>
+        <strong>D9 伊宁</strong><br>
+        ├─ ✅ 喀赞其/六星街：非禁飞区可飞<br>
+        ├─ ✅ 伊犁河大桥：开阔河段可飞，限高120m<br>
+        └─ ⚠️ 伊宁有军用机场，避开净空区
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h2 class="section-title">🎒 行前物品清单</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3>证件类</h3>
+      <ul class="checklist"><li>身份证 ×5（必带！）</li><li>驾照（租车人）</li><li>老人优待证（部分景点优惠）</li><li>学生证（孩子）</li></ul>
+    </div>
+    <div class="card">
+      <h3>衣物类</h3>
+      <ul class="checklist"><li>冲锋衣/薄羽绒服 ×1</li><li>速干T恤 ×3-4</li><li>防晒衣/皮肤衣 ×1</li><li>长裤（防蚊虫）</li><li>舒适防滑徒步鞋</li><li>宽檐遮阳帽</li></ul>
+    </div>
+    <div class="card">
+      <h3>防护类</h3>
+      <ul class="checklist"><li>高倍防晒霜 SPF50+</li><li>墨镜（紫外线极强）</li><li>润唇膏</li><li>驱蚊液</li><li>晕车药（山路多弯）</li><li>老人常用药+氧气瓶</li></ul>
+    </div>
+    <div class="card">
+      <h3>电子/其他</h3>
+      <ul class="checklist"><li>充电宝+车载充电器</li><li>下载新疆离线地图</li><li>保温杯</li><li>零食干粮（山区补给）</li><li>现金少量备用</li><li>折叠伞</li></ul>
+    </div>
+  </div>
+
+</section>
+
+<!-- ======== DAY 1 ======== -->
+<section class="section" id="sec-day1">
+  <h2 class="section-title">Day 1 · 8月14日（周四）| 北京 → 兰州</h2>
+  <p class="section-desc"><span class="route-badge">🚄 G351 北京西 07:55 → 兰州西 14:38</span> 全程6小时43分</p>
+
+  <div class="highlight-card">
+    <h3>🌉 中山桥 + 白塔山 — 今日重点</h3>
+    <div class="highlight-sub">💡 黄河第一桥，百年铁桥横跨黄河，登白塔山俯瞰兰州全景与黄河日落</div>
+    <div class="hl-section">
+      <div class="hl-section-title">📸 打卡点</div>
+      <ul class="hl-list">
+        <li>中山铁桥：百年历史，步行穿越感受黄河奔腾，夜景灯光绝美</li>
+        <li>白塔山公园：山顶白塔寺，俯瞰兰州城与黄河蜿蜒，老人可选不登山</li>
+        <li>黄河母亲雕塑：黄河风情线起点，兰州地标合影</li>
+        <li>正宁路夜市：牛奶鸡蛋醪糟、烤肉串、酿皮子，兰州最热闹的夜市</li>
+      </ul>
+    </div>
+    <div class="hl-section">
+      <div class="hl-section-title">✨ 最美时刻</div>
+      <div class="hl-tips">傍晚17:30-19:00是中山桥+白塔山最佳时段，夕阳洒在黄河上金光粼粼。白塔山看日落约需30分钟登顶，不想爬山的老人可在桥边茶摊休息。</div>
+    </div>
+    <div class="hl-section">
+      <div class="hl-section-title">⚠️ Tips</div>
+      <div class="hl-tips">① 中山桥和白塔山均免费，无需预约 ② 正宁路夜市人多拥挤，牵好孩子 ③ 夜市人均¥40-60，推荐牛奶鸡蛋醪糟（认准老马家国华）④ 兰州日落约20:00，傍晚凉爽宜人</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>今日行程</h3>
+    <div class="day-plan">
+      <div class="stop time-label">🌅 06:30 — 出发去北京西站</div>
+      <div class="stop">提前1小时到站，取票/安检。带好早餐在车上吃。</div>
+      <div class="stop time-label">🚄 07:55-14:38 — G351高铁</div>
+      <div class="stop">途经石家庄(08:56)→郑州东(10:14)→西安北(12:05)→兰州西(14:38)。二等座约¥600/人。</div>
+      <div class="stop time-label">🏨 15:00 — 入住兰州酒店</div>
+      <div class="stop">推荐西站附近/西关十字区域，方便游玩。放行李休整1小时。</div>
+      <div class="stop time-label">🌉 16:30-18:00 — 中山桥 + 白塔山公园</div>
+      <div class="stop">兰州地标！黄河第一桥"中山铁桥"步行穿越。登白塔山俯瞰兰州全景和黄河日落（老人可选择不登山，桥边漫步）。<span class="tag tag-green">免费</span></div>
+      <div class="stop time-label">🍜 18:30-20:00 — 正宁路夜市</div>
+      <div class="stop">兰州最热闹夜市！推荐：牛奶鸡蛋醪糟、烤肉串、酿皮子、灰豆子。人均¥40-60。</div>
+      <div class="stop time-label">🌙 20:30 — 回酒店休息</div>
+      <div class="stop">老人孩子早休息，为明天的兰州一日游养精蓄锐。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>💰 本日预算</h3>
+    <table>
+      <tr><td>高铁</td><td>¥600 × 5 = ¥3,000</td></tr>
+      <tr><td>住宿</td><td>¥600–750（2间房）</td></tr>
+      <tr><td>餐饮</td><td>¥200–300</td></tr>
+      <tr><td style="font-weight:700;">合计</td><td style="font-weight:700;">约 ¥3,800–4,050</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ======== DAY 2 ======== -->
+<section class="section" id="sec-day2">
+  <h2 class="section-title">Day 2 · 8月15日（周五）| 兰州文化半日游</h2>
+  <p class="section-desc"><span class="route-badge">🎯 读者博物馆 + 黄河风情线 + 美食</span></p>
+
+  <div class="highlight-card">
+    <h3>📚 读者博物馆 — 今日重点</h3>
+    <div class="highlight-sub">💡 中国首个以《读者》品牌命名的博物馆，40余年经典封面墙+插图原作展，文创颜值在线</div>
+    <div class="hl-section">
+      <div class="hl-section-title">📸 打卡点</div>
+      <ul class="hl-list">
+        <li>读者博物馆：经典封面墙、杂志发展历程、珍贵手稿原件，约1小时</li>
+        <li>读者插图艺术馆：同栋楼一起逛，插画原作精美，适合拍照打卡</li>
+        <li>黄河风情线：黄河母亲雕塑→中山桥→水车博览园，步行串联约3km</li>
+        <li>甘肃简牍博物馆/兰州老街：二选一，简牍看汉代文明，老街逛吃拍照</li>
+        <li>南关民族风味街：比正宁路更本地化，炒拨拉、甜醅子必尝</li>
+      </ul>
+    </div>
+    <div class="hl-section">
+      <div class="hl-section-title">✨ 游玩建议</div>
+      <div class="hl-tips">读者博物馆+插图艺术馆在一起，一次看完约1-1.5小时。黄河风情线建议从黄河母亲雕塑往中山桥方向走，全程平路，老人可分段休息。</div>
+    </div>
+    <div class="hl-section">
+      <div class="hl-section-title">⚠️ Tips</div>
+      <div class="hl-tips">① 读者博物馆需在「读者在线预约系统」小程序提前预约 ② 所有景点均在西站10km以内，打车方便 ③ 老人走不动可在中山桥附近茶摊休息，孩子可体验羊皮筏子（¥30-50/人）④ 提前整理行李，明天一早赶飞机</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>今日行程</h3>
+    <div class="day-plan">
+      <div class="stop time-label">🍜 08:00-09:00 — 地道牛肉面早餐</div>
+      <div class="stop">推荐「马子禄牛肉面」（大众巷）或「磨沟沿老字号牛肉面」。一清二白三红四绿五黄，加份牛肉加个蛋，¥15-25/碗。</div>
+      <div class="stop time-label">📚 09:30-11:00 — 读者博物馆 + 读者插图艺术馆</div>
+      <div class="stop">
+        <strong>地址：</strong>城关区读者大道568号读者大厦A座（读者出版集团内）<br>
+        <strong>开放时间：</strong>9:00-20:00（周一至周日）<br>
+        <strong>门票：</strong>免费<br>
+        <strong>预约：</strong>需在「读者在线预约系统」小程序提前预约<br>
+        中国首个以"读者"品牌命名的博物馆，涵盖《读者》杂志40余年发展历程、经典封面墙、插图原作展。与读者插图艺术馆在一起，两个馆一次看完，约1-1.5小时。文创颜值在线，适合拍照打卡。<br>
+        <span class="tag tag-green">距兰州西站约8km，打车约20分钟</span>
+      </div>
+      <div class="stop time-label">🌊 11:30-13:30 — 黄河母亲雕塑 + 中山桥 + 水车博览园</div>
+      <div class="stop">
+        黄河风情线三大经典地标，建议步行串联（全程约3km）：<br>
+        ① 黄河母亲雕塑 → ② 中山铁桥（百年铁桥，可步行过河）→ ③ 水车博览园<br>
+        老人可在中山桥附近坐黄河边茶摊休息，孩子可以体验羊皮筏子（¥30-50/人）。<br>
+        <span class="tag tag-blue">中山桥距读者博物馆约4km，打车10分钟</span>
+      </div>
+      <div class="stop time-label">🥘 13:30-14:30 — 午餐</div>
+      <div class="stop">推荐「阿西娅」或「马老六」手抓羊肉，人均¥50-70。</div>
+      <div class="stop time-label">☕ 15:00-16:00 — 黄河边三炮台茶摊歇脚</div>
+      <div class="stop">点一杯八宝茶（三炮台），坐在黄河边吹风歇脚，体验兰州人的慢生活。¥10-20/杯。老人正好休息一下。</div>
+      <div class="stop time-label">🏙️ 16:30-18:00 — 甘肃简牍博物馆 或 兰州老街</div>
+      <div class="stop">
+        二选一：<br>
+        ① <strong>甘肃简牍博物馆</strong>：距西站仅3.7km，地铁1号线马滩站步行800米，展出2.3万枚汉代简牍，免费，适合历史爱好者。<br>
+        ② <strong>兰州老街</strong>：距西站约4km，明清建筑风格复刻古街，各种小吃和手工艺品，逛街拍照。<br>
+        <span class="tag tag-green">距住宿地（兰语·悠居）均不超过5km</span>
+      </div>
+      <div class="stop time-label">🌙 19:00-20:30 — 南关民族风味一条街</div>
+      <div class="stop">比正宁路更本地化的夜市。推荐：炒拨拉、甜醅子、羊肉泡馍。人均¥40-60。</div>
+      <div class="stop time-label">🏨 21:00 — 回酒店，早休息</div>
+      <div class="stop">明天一早赶飞机，提前整理行李。</div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <strong>💡 温馨提示：</strong>读者博物馆需在「读者在线预约系统」小程序提前预约。老人如果走不动，可减少步行量，中山桥附近有茶摊可休息。所有景点均在西站10km以内，打车方便。
+  </div>
+
+  <div class="card">
+    <h3>💰 本日预算</h3>
+    <table>
+      <tr><td>住宿</td><td>¥325（已付）</td></tr>
+      <tr><td>餐饮</td><td>¥300–400</td></tr>
+      <tr><td>景点</td><td>免费 + ¥50 可选体验（羊皮筏子等）</td></tr>
+      <tr><td>交通</td><td>约¥80–100（市内打车）</td></tr>
+      <tr><td style="font-weight:700;">合计</td><td style="font-weight:700;">约 ¥700–825</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ======== DAY 3 ======== -->
+<section class="section" id="sec-day3">
+  <h2 class="section-title">Day 3 · 8月16日（周六）| 兰州 ✈ 伊宁 → 伊昭公路 → 昭苏</h2>
+  <p class="section-desc"><span class="route-badge">✈ 兰州中川 → 伊宁</span> <span class="route-badge">🚗 伊昭公路 122km 约4h</span></p>
+
+  <div class="highlight-card">
+    <h3>🛣️ 伊昭公路 — 今日重点</h3>
+    <div class="highlight-sub">💡 被誉为"小独库"的S237景观公路，122公里浓缩天山精华，一日游四季，十里不同天</div>
+    <div class="hl-section">
+      <div class="hl-section-title">📸 打卡点</div>
+      <ul class="hl-list">
+        <li>白石峰观景台：海拔3475m，停车俯瞰雪山全景，伊昭公路最高点</li>
+        <li>安格列特达坂：翻越达坂的蜿蜒山路，航拍/运动相机绝佳机位</li>
+        <li>骆驼驿站：民俗体验，可短暂休息补给</li>
+        <li>油菜花田：8月下旬仍有晚花，金黄花海配雪山背景</li>
+        <li>察布查尔锡伯古城：途经可短暂停留，了解锡伯族西迁历史</li>
+      </ul>
+    </div>
+    <div class="hl-section">
+      <div class="hl-section-title">✨ 最美时刻</div>
+      <div class="hl-tips">下午14:00-17:00光线最佳，阳光从侧面照射山脊，立体感最强。白石峰观景台停车拍照约15-20分钟，注意高海拔（3475m）不要剧烈奔跑。</div>
+    </div>
+    <div class="hl-section">
+      <div class="hl-section-title">⚠️ Tips</div>
+      <div class="hl-tips">① 伊昭公路限7座以下车辆，GL8可通行（确认已核）② 每天8:00-20:00开放，夜间封闭 ③ 弯道超100个，车速控制40-60km/h，老人孩子提前吃晕车药 ④ 途中无加油站，伊宁出发前务必加满油 ⑤ 如遇极端天气会临时管制，关注「伊犁交警」公众号 ⑥ <strong>全程禁飞无人机</strong>（战备公路+军事管理区）</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>今日行程</h3>
+    <div class="day-plan">
+      <div class="stop time-label">🌅 06:00 — 退房出发去机场</div>
+      <div class="stop">兰州中川机场距市区约60km，预留1.5h车程。</div>
+      <div class="stop time-label">✈ 08:00-11:40 — 兰州 → 伊宁</div>
+      <div class="stop">飞行约3h40m。抵达伊宁后取车（提前在租车平台预订7座SUV）。</div>
+      <div class="stop time-label">🍜 12:00-13:00 — 伊宁午餐</div>
+      <div class="stop">推荐伊宁市区吃一顿新疆拌面/抓饭，补充能量。加油！伊昭公路途中无加油站。</div>
+      <div class="stop time-label">🚗 13:30-18:00 — 伊昭公路自驾</div>
+      <div class="stop">
+        <strong>被誉为"小独库"的S237景观公路！</strong><br>
+        伊宁→察布查尔→白石峰（海拔3475m，停车拍照）→安格列特达坂→昭苏。<br>
+        122公里浓缩天山精华，一日游四季，十里不同天。<br>
+        沿途可停靠：骆驼驿站（民俗体验）、白石峰观景台（雪山全景）、油菜花田（8月仍有）。<br>
+        <span class="tag tag-red">注意</span> 限7座以下车辆！弯道超100个，车速控制在40-60km/h。
+      </div>
+      <div class="stop time-label">🏨 18:00 — 入住昭苏/夏特柯尔克孜民族乡</div>
+      <div class="stop">
+        <strong>优选夏特柯尔克孜民族乡！</strong>距夏塔景区仅几分钟车程，第二天抢马占先机。<br>
+        推荐搜"夏塔民宿"或"昭苏夏塔客栈"，提前至少1周预订。人均¥120-160。
+      </div>
+      <div class="stop time-label">🍖 19:00 — 晚餐</div>
+      <div class="stop">尝尝昭苏特色：马肉纳仁、草原羊肉串。人均¥50-70。</div>
+    </div>
+  </div>
+
+  <div class="alert alert-warn">
+    <strong>⚠️ 伊昭公路重要提示：</strong>每天8:00-20:00开放，夜间封闭。如遇极端天气会临时管制。
+    出发前务必查询「伊犁交警」或当地交通公众号了解实时路况。山路多弯，老人孩子易晕车，提前吃晕车药。
+  </div>
+
+  <div class="card">
+    <h3>💰 本日预算</h3>
+    <table>
+      <tr><td>机票</td><td>¥800–1,500 × 5 = ¥4,000–7,500</td></tr>
+      <tr><td>租车</td><td>¥400–600（开始计费）</td></tr>
+      <tr><td>住宿</td><td>¥600–800（昭苏/夏塔民宿）</td></tr>
+      <tr><td>餐饮</td><td>¥250–350</td></tr>
+      <tr><td style="font-weight:700;">合计</td><td style="font-weight:700;">约 ¥5,250–9,250</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ======== DAY 4 ======== -->
+<section class="section" id="sec-day4">
+  <h2 class="section-title">Day 4 · 8月17日（周日）| 夏塔古道 → 玉湖 → 特克斯</h2>
+  <p class="section-desc"><span class="route-badge">🐴 夏塔骑马+轻徒步</span> <span class="route-badge">💎 昭苏玉湖</span> <span class="route-badge">🚗 夏塔→玉湖1h →特克斯2.5h</span></p>
+
+  <div class="highlight-card">
+    <h3>🏔️ 夏塔古道 + 玉湖 — 今日重点</h3>
+    <div class="highlight-sub">💡 夏塔古道通往木扎尔特冰川，雪山+草原+峡谷的终极组合；玉湖则是藏在峡谷中的翡翠碧玉</div>
+    <div class="hl-section">
+      <div class="hl-section-title">📸 打卡点</div>
+      <ul class="hl-list">
+        <li>夏塔古道：骑马或徒步穿越高山草甸，远眺木扎尔特冰川，新疆最美古道之一</li>
+        <li>鲜花台：骑马终点观景台，雪山环绕、野花遍地，出片率极高</li>
+        <li>温泉酒店木栈道：老人不骑马的最佳选择，平缓栈道+雪山远景</li>
+        <li>昭苏玉湖：海拔2200m的高山雪融湖，碧玉色湖水如镶嵌山间的宝石</li>
+      </ul>
+    </div>
+    <div class="hl-section">
+      <div class="hl-section-title">✨ 最美时刻</div>
+      <div class="hl-tips">夏塔上午光线最好，9:00-12:00是黄金时段，雪山在阳光下层次分明。玉湖下午2-4点光线最合适，蓝绿色湖水在阳光下变幻莫测。骑马建议选2小时行程到鲜花台往返。</div>
+    </div>
+    <div class="hl-section">
+      <div class="hl-section-title">⚠️ Tips</div>
+      <div class="hl-tips">① 旺季马队先到先得，到温泉酒店后立刻排队抢马 ② 海拔2000-2500m，注意防晒+高反药 ③ 玉湖在夏塔→特克斯路上，顺路不绕路 ④ 今天车程较长（夏塔→玉湖1h→特克斯2.5h），老人孩子备好零食和水 ⑤ <strong>夏塔景区需游客中心报备后方可飞无人机</strong>，峡谷开阔区限高120m</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>今日行程</h3>
+    <div class="day-plan">
+      <div class="stop time-label">🌅 07:30 — 出发去夏塔景区</div>
+      <div class="stop">早出发！旺季9:00前到游客中心，避开旅游团高峰。门口买票+区间车。</div>
+      <div class="stop time-label">🎫 08:30-09:00 — 购票入园</div>
+      <div class="stop">门票+第一段区间车约¥80-90/人。提前在「智游昭苏」公众号查看是否开通线上预约。第一段区间车：游客中心→温泉酒店（必坐，私家车禁入）。</div>
+      <div class="stop time-label">🚌 09:00-09:40 — 区间车到温泉酒店</div>
+      <div class="stop">沿途雪山草原风光，约40分钟车程。</div>
+      <div class="stop time-label">🐴 09:40-10:00 — 抢马！</div>
+      <div class="stop"><strong>关键一步！</strong>到温泉酒店后立即前往马队服务点排队。无线上预约，先到先得！建议买第二段电瓶车票（¥50往返）到青蛙泉徒步起点，那边也有马队服务点。<br>骑马价格约¥80-120/小时，建议选2小时行程到鲜花台往返，老人可坐电瓶车到观景点等候。</div>
+      <div class="stop time-label">🏔️ 10:00-13:00 — 骑马+徒步探索</div>
+      <div class="stop">从青蛙泉出发，骑马或徒步至鲜花台，远眺木扎尔特冰川。夏季野花遍地，雪山背景绝美出片！老人可在温泉酒店周边木栈道漫步，同样能看雪山。</div>
+      <div class="stop time-label">🍜 13:00-14:00 — 景区午餐 + 出园</div>
+      <div class="stop">温泉酒店有简餐（拌面、抓饭约¥30-40），或自带干粮野餐。吃完后坐区间车返回停车场，取车出发。</div>
+      <div class="stop time-label">💎 14:30-16:00 — 昭苏玉湖</div>
+      <div class="stop">
+        <strong>夏塔景区→玉湖约60km，驱车约1小时。</strong>玉湖在夏塔到特克斯的路上，顺路不绕路。<br><br>
+        <strong>💎 昭苏玉湖：</strong><br>
+        - 海拔2200m的高山雪融湖，长8km，最宽处1.5km<br>
+        - 两岸山峦绿草如茵，碧玉般的湖水在峡谷间流淌，如镶嵌在山间的巨大宝石<br>
+        - 8月湖水呈绝美蓝绿色，清澈透亮，阳光照射下不同角度呈现不同色泽<br>
+        - 湖边可步行拍照，1-1.5小时足够<br><br>
+        <strong>🎫 门票信息：</strong><br>
+        - 门票：¥30/人<br>
+        - 60岁以上老人：<strong>半价¥15/人</strong>（67/69岁两位老人可享！）<br>
+        - 景交车：¥30/人（可选）<br>
+        - 自驾进入：¥100/车（5人自驾更划算，推荐自驾进入）<br><br>
+        <span class="tag tag-blue">自驾¥100/车 vs 景交车¥30×5=¥150，建议自驾进入</span>
+      </div>
+      <div class="stop time-label">🚗 16:00-18:30 — 玉湖 → 特克斯</div>
+      <div class="stop">
+        玉湖→特克斯约120km，驱车约2-2.5小时。沿途昭苏草原风光，8月下旬草已泛黄但层次丰富。<br>
+        <span class="tag tag-green">一路沿G577行驶，路况良好，GL8轻松应对</span>
+      </div>
+      <div class="stop time-label">🏨 18:30 — 入住特克斯归城小居房</div>
+      <div class="stop">特克斯县幸福里小区4号楼1单元301，距离中心环岛近，放行李休整。</div>
+      <div class="stop time-label">🏙️ 19:30-21:00 — 特克斯八卦城探索</div>
+      <div class="stop">步行逛离街（特色文创街区）、太极坛。如有无人机可航拍八卦城全景（注意禁飞区）。登八卦公园摩天轮俯瞰城市布局（¥30/人）。</div>
+      <div class="stop time-label">🍖 21:00 — 特克斯夜市晚餐</div>
+      <div class="stop">推荐八卦城美食街：烤包子、架子肉、酸奶粽子。人均¥50-70。</div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <strong>🐴 夏塔骑马实战技巧：</strong>①早到是关键，9:30前到马队基本能排到；②和柯尔克孜族马夫现场谈价，明确路线和时长；③孩子11岁正好能骑马，大人可同骑或由马夫牵马；④老人可选电瓶车到观景台，一样出片。末班区间车约20:00，别错过！<br><br>
+    <strong>💎 玉湖Tips：</strong>①玉湖自驾票¥100/车，比5人买景交车划算；②湖边没有餐饮设施，建议在夏塔景区吃饱再来；③老人在湖边步道走走就好，不需要爬山。
+  </div>
+
+  <div class="card">
+    <h3>💰 本日预算</h3>
+    <table>
+      <tr><td>夏塔门票+区间车</td><td>¥90 × 5 = ¥450</td></tr>
+      <tr><td>电瓶车(可选)</td><td>¥50 × 3 = ¥150</td></tr>
+      <tr><td>骑马</td><td>¥200 × 2-3人 = ¥400–600</td></tr>
+      <tr><td>玉湖自驾票</td><td>¥100/车</td></tr>
+      <tr><td>住宿</td><td>¥281（已付）</td></tr>
+      <tr><td>餐饮</td><td>¥250–350</td></tr>
+      <tr><td>油费</td><td>约¥150–200</td></tr>
+      <tr><td style="font-weight:700;">合计</td><td style="font-weight:700;">约 ¥1,781–2,131</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ======== DAY 5 ======== -->
+<section class="section" id="sec-day5">
+  <h2 class="section-title">Day 5 · 8月18日（周一）| 特克斯 → 恰甫其海 → 库尔德宁</h2>
+  <p class="section-desc"><span class="route-badge">🚗 特克斯→库尔德宁 约2.5h（途经恰甫其海）</span></p>
+
+  <div class="highlight-card">
+    <h3>💧 恰甫其海 + 库尔德宁 — 今日重点</h3>
+    <div class="highlight-sub">💡 恰甫其海是伊犁河谷中的"蓝宝石"，免费的高山湖泊；库尔德宁是世界自然遗产地，雪岭云杉的故乡</div>
+    <div class="hl-section">
+      <div class="hl-section-title">📸 打卡点</div>
+      <ul class="hl-list">
+        <li>阿克塔斯草原（特克斯）：免费私藏草原，360°雪山环绕，距县城仅30分钟</li>
+        <li>恰甫其海：特克斯河形成的高山湖泊，水域58km²，蓝天雪山倒映，免费游览</li>
+        <li>库尔德宁齐梦德观景台：木栈道徒步终点，俯瞰喀班巴依峰+云杉林海</li>
+        <li>库尔德宁日落：傍晚光线洒在雪山和云杉上，童话世界的金色时光</li>
+      </ul>
+    </div>
+    <div class="hl-section">
+      <div class="hl-section-title">✨ 最美时刻</div>
+      <div class="hl-tips">恰甫其海上午10-12点光线通透，湖面倒影最清晰。库尔德宁下午4点后入园人少光线好，16:00-19:30是拍摄黄金时段，日落金山不容错过。</div>
+    </div>
+    <div class="hl-section">
+      <div class="hl-section-title">⚠️ Tips</div>
+      <div class="hl-tips">① 恰甫其海无景区围栏，免费但无配套，自备水和零食 ② 库尔德宁门票¥60/人，可买两日票 ③ 晚上库尔德宁可看星空，带厚外套（夜间约8-10°C）④ <strong>库尔德宁开阔区可飞无人机，限高120m</strong>，山区信号弱保持视距内 ⑤ 沿途无加油站，特克斯出发前加满油</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>今日行程</h3>
+    <div class="day-plan">
+      <div class="stop time-label">🌅 08:30-09:30 — 特克斯晨间漫步</div>
+      <div class="stop">早上八卦城人少，适合拍照。去阿克塔斯草原（免费！特克斯私藏草原，6-8月花海，360°雪山环绕，距县城仅30分钟车程）。</div>
+      <div class="stop time-label">🚗 10:00-11:30 — 驱车前往恰甫其海</div>
+      <div class="stop">沿X765宝柯伴山公路行驶，沿途麦浪、雪山相伴，路况良好。</div>
+      <div class="stop time-label">💎 11:30-12:30 — 恰甫其海</div>
+      <div class="stop"><strong>伊犁河谷中的"蓝宝石"！</strong>特克斯河梯级开发形成的高山湖泊，水域58km²，水深逾90米。无景区围栏，免费游览。蓝天雪山倒映湖中，适合全家拍照打卡。停留1小时足够。<span class="tag tag-green">免费</span></div>
+      <div class="stop time-label">🍜 12:30-13:30 — 途中午餐</div>
+      <div class="stop">在巩留县或途中乡镇吃午餐，推荐拌面/抓饭，¥25-35/人。</div>
+      <div class="stop time-label">🚗 13:30-14:30 — 前往库尔德宁</div>
+      <div class="stop">恰甫其海→库尔德宁约1h车程。</div>
+      <div class="stop time-label">🏨 14:30 — 入住库尔德宁住宿</div>
+      <div class="stop">推荐库尔德宁镇或柏睿营地附近的小木屋/民宿。选择景区入口附近的住宿，方便2天深度游。办理入住、休整。</div>
+      <div class="stop time-label">🌲 16:00-19:30 — 库尔德宁下午探索</div>
+      <div class="stop"><strong>第一天：齐梦德观景台方向。</strong>沿木栈道徒步（或骑马），观赏雪岭云杉、喀班巴依峰。傍晚时分是拍摄落日金山的最佳时机！光线洒在雪山和云杉上，仿佛童话世界。<br>门票¥60/人，下午4点后入园人少光线好。</div>
+      <div class="stop time-label">🍖 19:30 — 营地/民宿晚餐</div>
+      <div class="stop">推荐品尝哈萨克族美食：手抓肉、奶茶、包尔萨克。人均¥50-70。</div>
+      <div class="stop time-label">🌌 22:00 — 观星</div>
+      <div class="stop">如果天气晴朗，库尔德宁的夜空银河清晰可见！带件厚外套出门仰望星空。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>💰 本日预算</h3>
+    <table>
+      <tr><td>库尔德宁门票</td><td>¥60 × 5 = ¥300</td></tr>
+      <tr><td>住宿</td><td>¥600–900</td></tr>
+      <tr><td>餐饮</td><td>¥250–350</td></tr>
+      <tr><td style="font-weight:700;">合计</td><td style="font-weight:700;">约 ¥1,150–1,550</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ======== DAY 6 ======== -->
+<section class="section" id="sec-day6">
+  <h2 class="section-title">Day 6 · 8月19日（周二）| 库尔德宁全天深度游</h2>
+  <p class="section-desc"><span class="route-badge">🌲 云杉始祖之地 · 童话森林全天沉浸</span></p>
+
+  <div class="highlight-card">
+    <h3>🌲 库尔德宁深度游 — 今日重点</h3>
+    <div class="highlight-sub">💡 世界自然遗产地，雪岭云杉的起源地，全球仅存的完整天山针叶林生态系统，被誉为"上帝打翻的调色盘"</div>
+    <div class="hl-section">
+      <div class="hl-section-title">📸 打卡点</div>
+      <ul class="hl-list">
+        <li>晨雾森林：清晨7:30-8:30云雾缭绕在云杉林间，摄影师的天堂</li>
+        <li>溪流栈道：沿木栈道漫步，8月满眼翠绿，可遇旱獭和松鼠</li>
+        <li>喀班巴依峰脚下：体力好可走到雪山脚下，近距离感受巍峨</li>
+        <li>森林骑马：库尔德宁有马队，换一种方式穿越云杉林</li>
+      </ul>
+    </div>
+    <div class="hl-section">
+      <div class="hl-section-title">✨ 游玩建议</div>
+      <div class="hl-tips">今天慢节奏深度游，老人可选择较平坦的栈道，体力好的探索深处。带干粮在森林里野餐（垃圾务必带走）。下午可自由拍摄或在民宿晒太阳喝茶，孩子可在草原奔跑。</div>
+    </div>
+    <div class="hl-section">
+      <div class="hl-section-title">⚠️ Tips</div>
+      <div class="hl-tips">① <strong>门票当日有效，第二天需重新购票¥60/人</strong> ② 景区内禁止自行露营 ③ 山区天气多变，随时带防风外套 ④ 保护环境所有垃圾带出 ⑤ <strong>可飞无人机，限高120m</strong>，远离野生动植物 ⑥ 森林深处无信号，保持视距内飞行</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>今日行程</h3>
+    <div class="day-plan">
+      <div class="stop time-label">🌄 07:30-08:30 — 晨雾森林</div>
+      <div class="stop"><strong>库尔德宁最美时刻！</strong>清晨晨雾缭绕在云杉林间，是摄影师的天堂。早起的人值得这份宁静。门票需重新购买（¥60/人）。</div>
+      <div class="stop time-label">🥾 09:00-12:00 — 森林深处探索</div>
+      <div class="stop">今天探索不同区域：沿溪流栈道漫步（5月野生郁金香，8月满眼翠绿），寻找瀑布飞流。老人可选择较平坦的栈道，体力好的可走到喀班巴依峰脚下。沿途可遇旱獭、松鼠。</div>
+      <div class="stop time-label">🍜 12:00-13:00 — 景区午餐</div>
+      <div class="stop">带些干粮在森林里野餐（注意环保！垃圾带走），或回民宿用餐。</div>
+      <div class="stop time-label">📸 13:00-16:00 — 自由拍摄+休闲</div>
+      <div class="stop">下午光线柔和。可去昨天没走到的地方，或在住宿地晒太阳、喝茶、看书。孩子可在草原奔跑玩耍。</div>
+      <div class="stop time-label">🐎 16:00-18:00 — 骑马/徒步可选</div>
+      <div class="stop">如昨天意犹未尽，可再体验森林骑马（库尔德宁也有马队）。或沿不同方向的栈道走一走。</div>
+      <div class="stop time-label">🍖 19:00 — 晚餐</div>
+      <div class="stop">在民宿享受一顿地道的哈萨克晚餐。人均¥50-70。</div>
+      <div class="stop time-label">🌌 21:30 — 最后一晚星空</div>
+      <div class="stop">明天要长途驱车，今晚早点休息，也可以在院子里最后看一眼银河。</div>
+    </div>
+  </div>
+
+  <div class="alert alert-warn">
+    <strong>⚠️ 库尔德宁注意事项：</strong>①门票当日有效，第二天入园需重新购票（¥60/人）；②核心景区禁止自行露营，不要试图在景区内搭帐篷；③山区天气多变，随时带好防风外套；④保护环境，所有垃圾带出景区。
+  </div>
+
+  <div class="card">
+    <h3>💰 本日预算</h3>
+    <table>
+      <tr><td>库尔德宁门票</td><td>¥60 × 5 = ¥300</td></tr>
+      <tr><td>住宿</td><td>¥600–900</td></tr>
+      <tr><td>餐饮</td><td>¥250–350</td></tr>
+      <tr><td style="font-weight:700;">合计</td><td style="font-weight:700;">约 ¥1,150–1,550</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ======== DAY 7 ======== -->
+<section class="section" id="sec-day7">
+  <h2 class="section-title">Day 7 · 8月20日（周三）| 库尔德宁 → 清水河镇 → 霍尔果斯口岸</h2>
+  <p class="section-desc"><span class="route-badge">🚗 库尔德宁→清水河镇 约3.5h</span> <span class="route-badge">🌍 下午霍尔果斯口岸</span></p>
+
+  <div class="highlight-card">
+    <h3>🌍 霍尔果斯口岸 — 今日重点</h3>
+    <div class="highlight-sub">💡 中国与哈萨克斯坦的跨境口岸，可远眺中哈两国国门，还能免税购物带回国货</div>
+    <div class="hl-section">
+      <div class="hl-section-title">📸 打卡点</div>
+      <ul class="hl-list">
+        <li>口岸国门景区：远眺中哈两国国门，拍照打卡，门票约¥30/人，身份证即可</li>
+        <li>中哈霍尔果斯国际边境合作中心：跨境购物体验，进入哈萨克斯坦一侧免税区</li>
+        <li>国界碑/界碑广场：口岸标志性地标合影</li>
+        <li>免税购物：哈方一侧可买巧克力、蜂蜜、红葡萄酒等（限额¥8,000）</li>
+      </ul>
+    </div>
+    <div class="hl-section">
+      <div class="hl-section-title">✨ 游玩建议</div>
+      <div class="hl-tips">口岸分两个区域：① 国门景区（参观性质，仅拍照）② 中哈合作中心（跨境购物）。成年人凭身份证现场办通行证（¥15工本费），孩子带户口本+出生证明。老人只需身份证。办理约10-20分钟。</div>
+    </div>
+    <div class="hl-section">
+      <div class="hl-section-title">⚠️ Tips</div>
+      <div class="hl-tips">① 成年人需带身份证，孩子带户口本原件+出生证明 ② 合作中心内可携带不超过¥8,000免税商品 ③ <strong>口岸核心区绝对禁飞无人机，边境管控区5km内禁止飞行</strong> ④ 下午4点前到口岸，留足2-3小时游览 ⑤ 早高峰排队人多，错峰办证</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>今日行程</h3>
+    <div class="day-plan">
+      <div class="stop time-label">🌄 08:00-09:00 — 早餐 + 退房</div>
+      <div class="stop">在民宿吃早餐，收拾行李出发。在库尔德宁镇加满油。</div>
+      <div class="stop time-label">🚗 09:00-12:30 — 库尔德宁 → 清水河镇</div>
+      <div class="stop">
+        路线：库尔德宁→巩留县→G577→清水河镇，全程约200km，约3-3.5小时。<br>
+        路况以省道+国道为主，GL8完全能走。沿途经过巩留县城可补充物资和午餐。
+      </div>
+      <div class="stop time-label">🥘 12:30-13:30 — 巩留/清水河镇午餐</div>
+      <div class="stop">路上解决午餐，推荐拌面或抓饭，人均¥20-30。</div>
+      <div class="stop time-label">🏨 14:00 — 入住疆屿民宿</div>
+      <div class="stop">清水河镇新华北路12巷6号，放下行李休整。</div>
+      <div class="stop time-label">🌍 15:30-18:30 — 霍尔果斯口岸</div>
+      <div class="stop">
+        清水河镇到霍尔果斯口岸约30km，驱车约30-40分钟。<br><br>
+        <strong>📍 霍尔果斯口岸分两个区域：</strong><br>
+        ① <strong>口岸国门景区</strong>（参观性质）：可远眺中哈两国国门，拍照打卡，门票约¥30/人。无需特殊证件，身份证即可。<br>
+        ② <strong>中哈霍尔果斯国际边境合作中心</strong>（跨境购物）：可进入哈萨克斯坦一侧免税购物。<br><br>
+        <strong>🔑 进入中哈合作中心所需材料：</strong><br>
+        <table style="font-size:12px;margin:8px 0;">
+          <tr><th>人群</th><th>所需证件</th><th>办理方式</th><th>费用</th></tr>
+          <tr><td>成年人</td><td><strong>护照</strong>（有哈萨克斯坦签证）<strong>或</strong>身份证 + <strong>出入境通行证</strong></td><td>凭身份证在口岸现场办理出入境通行证（出入境证件办理大厅）</td><td>通行证工本费¥15</td></tr>
+          <tr><td>未成年人（11岁）</td><td><strong>户口本原件</strong> + <strong>出生证明</strong>（或身份证）</td><td>须由监护人陪同，现场办理</td><td>¥15</td></tr>
+          <tr><td>老年人（67/69岁）</td><td><strong>身份证</strong>（原价）</td><td>现场办理即可</td><td>¥15</td></tr>
+        </table>
+        <strong>📌 办理流程：</strong><br>
+        ① 到口岸大厅→ ② 出入境证件窗口排队办通行证（约10-20分钟）→ ③ 凭通行证+身份证进入合作中心→ ④ 哈方一侧免税购物<br><br>
+        <strong>⚠️ 注意事项：</strong><br>
+        - 合作中心内可携带不超过 ¥8,000 的免税商品出境<br>
+        - 中国公民凭身份证即可办理通行证，<strong>不一定需要护照</strong><br>
+        - 建议携带老人孩子的户口本和出生证明原件以防万一<br>
+        - 合作中心开放时间通常为 10:00-19:00（北京时间），请在18:00前进入<br>
+        - 如不打算跨境购物，只参观口岸国门景区即可，身份证出入
+      </div>
+      <div class="stop time-label">🍖 19:00 — 清水河镇晚餐</div>
+      <div class="stop">回清水河镇吃晚餐，推荐大盘鸡或手抓肉。人均¥50-70。</div>
+      <div class="stop time-label">🏨 20:30 — 回民宿早休息</div>
+      <div class="stop">明天要早起赶赛里木湖，早睡保证精力。</div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <strong>💡 温馨提示：</strong>如果全家不想跨境购物，只参观口岸国门景区（身份证即可）也很值得打卡。建议出发前确认中哈合作中心最新开放时间（近期政策可能调整）。
+  </div>
+
+  <div class="card">
+    <h3>💰 本日预算</h3>
+    <table>
+      <tr><td>住宿</td><td>¥304（已付）</td></tr>
+      <tr><td>口岸门票</td><td>¥30 × 5 = ¥150（仅国门景区）</td></tr>
+      <tr><td>通行证</td><td>¥15 × 5 = ¥75（如入合作中心）</td></tr>
+      <tr><td>餐饮</td><td>¥250–350</td></tr>
+      <tr><td>油费</td><td>约¥200–250</td></tr>
+      <tr><td style="font-weight:700;">合计</td><td style="font-weight:700;">约 ¥979–1,079</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ======== DAY 8 ======== -->
+<section class="section" id="sec-day8">
+  <h2 class="section-title">Day 8 · 8月21日（周四）| 赛里木湖环湖 → 果子沟大桥 → 伊宁</h2>
+  <p class="section-desc"><span class="route-badge">🌊 南门进 · 顺时针环湖</span> <span class="route-badge">🌉 果子沟大桥</span> <span class="route-badge">🚗 赛湖→伊宁 1.5h</span></p>
+
+  <div class="highlight-card">
+    <h3>🌊 赛里木湖 + 果子沟大桥 — 今日重点</h3>
+    <div class="highlight-sub">💡 "大西洋最后一滴眼泪"，新疆最美高山湖泊，湖水蓝得令人窒息；果子沟大桥则是新疆第一高桥，峡谷壮观</div>
+    <div class="hl-section">
+      <div class="hl-section-title">📸 打卡点</div>
+      <ul class="hl-list">
+        <li>松树头/南门入口：赛湖经典机位，雪山+湖水+松林同框</li>
+        <li>西海草原：顺时针第一个大景区，草原+雪山背景出片</li>
+        <li>克勒涌珠：湖边亲水步道，看天鹅和湖面蓝色倒影</li>
+        <li>点将台：俯瞰赛湖全貌的最佳制高点，远眺雪山</li>
+        <li>果子沟大桥观景台：桥面离谷底约200m，大桥+峡谷+远山同框</li>
+      </ul>
+    </div>
+    <div class="hl-section">
+      <div class="hl-section-title">✨ 最美时刻</div>
+      <div class="hl-tips">南门顶门进（8:30开门），早晨光线从东面照射湖面，西海草原方向光线最美。上午9-12点是拍摄黄金时段，湖水颜色最蓝。果子沟大桥下午2-4点光线最佳，但观景台全天可拍。</div>
+    </div>
+    <div class="hl-section">
+      <div class="hl-section-title">⚠️ Tips</div>
+      <div class="hl-tips">① 门票¥145/人（自驾环湖票），2日有效 ② <strong>需提前在"西域赛湖"公众号报备无人机</strong>，松树头/点将台/月亮湾可飞，鸟岛/游客中心/停车场上空禁飞 ③ 湖面瞬时风力5-6级，强风天禁飞 ④ 环湖约70-90km，老人不需要全程下车，选2-3个点即可 ⑤ 果子沟<strong>高速桥面严禁停车</strong>，务必在指定观景台停靠 ⑥ 午餐推荐赛湖高白鲑鱼（湖中特产）</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>今日行程</h3>
+    <div class="day-plan">
+      <div class="stop time-label">🌄 07:00-07:30 — 起床退房</div>
+      <div class="stop">清水河镇出发，赶赛里木湖南门开门。清水河镇到赛湖南门约80km，驱车约1-1.5小时。</div>
+      <div class="stop time-label">🌊 08:30-09:00 — 赛里木湖南门入园（顶门进）</div>
+      <div class="stop">
+        <strong>门票：</strong>¥145/人（自驾环湖票，含环湖公路通行）<br>
+        <strong>南门（松树头入口）优势：</strong>离果子沟最近，顺时针玩先到西海草原方向，早晨光线最好。<br>
+        门票2日有效（如次日还想来可不出园），当天出园则作废。<br>
+        <span class="tag tag-green">顶门进 = 最早入园，人最少，光线最美</span>
+      </div>
+      <div class="stop time-label">🚗 09:00-13:00 — 顺时针环湖（南门→西海草原→北线→东门方向）</div>
+      <div class="stop">
+        <strong>顺时针环湖路线（约70-90km，开车3-4h）：</strong><br>
+        ① <strong>西海草原</strong>（南门进入后第一个大景区）：草原+雪山背景，8月下旬草已泛黄但层次丰富，拍照半小时<br>
+        ② <strong>克勒涌珠</strong>：湖边亲水步道，看天鹅（如有）和湖面蓝色倒影<br>
+        ③ <strong>点将台</strong>：俯瞰赛湖全貌的最佳制高点，可远眺雪山<br>
+        ④ <strong>北线沿途停靠点</strong>：木栈道、观景台随停随拍<br>
+        ⑤ <strong>花海/金丝玉滩</strong>：8月花已谢，但湖边石滩可捡石头<br><br>
+        <strong>🌟 老人友好建议：</strong>不需要全程下车，在车上边开边看也很美。选择2-3个停靠点下车拍照即可，避免走太多路。
+      </div>
+      <div class="stop time-label">🍜 13:00-14:00 — 赛湖附近午餐</div>
+      <div class="stop">在赛湖东门或沿途服务区解决。推荐赛湖高白鲑鱼（湖中特产），人均¥60-80。</div>
+      <div class="stop time-label">🌉 14:30-15:30 — 果子沟大桥观景拍照</div>
+      <div class="stop">
+        从赛湖南门出园后经过果子沟，<strong>在果子沟大桥观景台停车拍照</strong>。<br>
+        经典机位：大桥+峡谷+远山同框。桥面离谷底约200m，非常壮观。<br>
+        <span class="tag tag-blue">⚠️ 高速桥面严禁停车，务必在指定观景台停靠</span>
+      </div>
+      <div class="stop time-label">🚗 15:30-17:00 — 果子沟 → 伊宁</div>
+      <div class="stop">果子沟→霍城→伊宁，约90km，1.5小时。沿途经过薰衣草田（8月非花期但田野风光不错）。</div>
+      <div class="stop time-label">🏨 17:00 — 入住伊宁民宿</div>
+      <div class="stop">推荐六星街或喀赞其民俗区附近的特色民宿。蓝墙花窗的维吾尔族庭院，超有风情！人均¥100-150。</div>
+      <div class="stop time-label">🌆 18:00-20:30 — 六星街CityWalk</div>
+      <div class="stop">六星街是伊宁最有特色的历史文化街区，俄式+维吾尔+塔塔尔等多民族风格建筑。推荐：古兰丹姆冰淇淋店、手风琴博物馆、俄罗斯列巴房。边走边吃，悠闲惬意。</div>
+      <div class="stop time-label">🍖 20:30 — 伊宁晚餐</div>
+      <div class="stop">推荐伊宁特色：艾勒喀斯尔餐厅（维吾尔宫廷菜）或街边烤肉。人均¥60-80。</div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <strong>💡 温馨提示：</strong>赛里木湖海拔2070m，8月白天体感15-20℃，但风大，体感温度比实际低3-5℃。给老人孩子带好防风外套和帽子。湖边紫外线极强，防晒霜必涂。
+  </div>
+
+  <div class="card">
+    <h3>💰 本日预算</h3>
+    <table>
+      <tr><td>赛里木湖门票</td><td>¥145 × 5 = ¥725</td></tr>
+      <tr><td>住宿</td><td>¥500–750</td></tr>
+      <tr><td>餐饮</td><td>¥400–500</td></tr>
+      <tr><td>油费</td><td>约¥150–200</td></tr>
+      <tr><td style="font-weight:700;">合计</td><td style="font-weight:700;">约 ¥1,775–2,175</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ======== DAY 9 ======== -->
+<section class="section" id="sec-day9">
+  <h2 class="section-title">Day 9 · 8月22日（周五）| 伊宁慢生活</h2>
+  <p class="section-desc"><span class="route-badge">🏡 伊宁老城深度体验 · 休整日</span></p>
+
+  <div class="highlight-card">
+    <h3>🏘️ 喀赞其 + 六星街 — 今日重点</h3>
+    <div class="highlight-sub">💡 伊宁是"中国的蓝色小镇"，喀赞其的蓝墙花窗随手拍都是大片；六星街则是多民族风情的文化街区</div>
+    <div class="hl-section">
+      <div class="hl-section-title">📸 打卡点</div>
+      <ul class="hl-list">
+        <li>喀赞其民俗区：蓝墙、花窗、葡萄架，维吾尔族聚居区，坐"哈迪克"马车（¥20-30/人）</li>
+        <li>六星街：俄式+维吾尔+塔塔尔多民族风格建筑，古兰丹姆冰淇淋店必打卡</li>
+        <li>手风琴博物馆：六星街内，了解中亚乐器文化</li>
+        <li>伊犁河大桥日落：河面宽阔，夕阳染红天际，伊犁之行完美句号</li>
+        <li>汉人街大巴扎：买干果、薰衣草制品、民族工艺品做伴手礼</li>
+      </ul>
+    </div>
+    <div class="hl-section">
+      <div class="hl-section-title">✨ 最美时刻</div>
+      <div class="hl-tips">喀赞其上午10-12点阳光透过葡萄架光影最美。伊犁河日落约20:00，提前30分钟到大桥占位。六星街全天适合CityWalk，边走边吃冰淇淋。</div>
+    </div>
+    <div class="hl-section">
+      <div class="hl-section-title">⚠️ Tips</div>
+      <div class="hl-tips">① 喀赞其和六星街均为免费开放街区，无需门票 ② 大巴扎砍价是标配，干果先尝后买 ③ 午餐推荐喀赞其周边维吾尔族家常菜：大盘鸡、薄皮包子 ④ <strong>非禁飞区可飞无人机</strong>，但伊宁有军用机场，注意避开净空区 ⑤ 今天是休整日，不赶时间，慢慢逛</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>今日行程</h3>
+    <div class="day-plan">
+      <div class="stop time-label">🌅 09:00-10:00 — 睡到自然醒</div>
+      <div class="stop">连续奔波后的一天休整，不赶时间。民宿早餐（奶茶+馕+果酱）。</div>
+      <div class="stop time-label">🏘️ 10:30-12:30 — 喀赞其民俗区</div>
+      <div class="stop">喀赞其是伊宁的"蓝色童话小镇"，维吾尔族聚居区。蓝墙、花窗、葡萄架，随手拍都是大片。可坐"哈迪克"（六根棍马车）游览（¥20-30/人），老人友好。</div>
+      <div class="stop time-label">🍜 12:30-13:30 — 午餐</div>
+      <div class="stop">喀赞其周边吃维吾尔族家常菜：大盘鸡、薄皮包子。人均¥40-60。</div>
+      <div class="stop time-label">🛍️ 14:00-16:00 — 伊宁大巴扎</div>
+      <div class="stop">逛汉人街大巴扎（伊宁最大市场），买干果（葡萄干、红枣、核桃）、薰衣草制品（霍城特产）、民族工艺品做伴手礼。砍价是标配！</div>
+      <div class="stop time-label">☕ 16:00-17:30 — 伊犁河畔下午茶</div>
+      <div class="stop">伊犁河大桥附近找家河畔茶馆/咖啡馆，看伊犁河日落前的美景。老人孩子轻松惬意。</div>
+      <div class="stop time-label">🌅 18:30-20:00 — 伊犁河日落</div>
+      <div class="stop">伊犁河大桥是看日落的经典位置。河面宽阔，夕阳染红天际，为伊犁之行画上完美句号。</div>
+      <div class="stop time-label">🍖 20:00 — 告别晚餐</div>
+      <div class="stop">选一家喜欢的餐厅，享受最后一顿新疆美食。推荐再来一顿羊肉串+乌苏啤酒！人均¥60-80。</div>
+      <div class="stop time-label">🎒 21:30 — 整理行李</div>
+      <div class="stop">明天返程，提前收拾行李，确认航班信息。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>💰 本日预算</h3>
+    <table>
+      <tr><td>住宿</td><td>¥500–750</td></tr>
+      <tr><td>餐饮</td><td>¥300–400</td></tr>
+      <tr><td>伴手礼</td><td>¥300–500</td></tr>
+      <tr><td style="font-weight:700;">合计</td><td style="font-weight:700;">约 ¥1,100–1,650</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ======== DAY 10 ======== -->
+<section class="section" id="sec-day10">
+  <h2 class="section-title">Day 10 · 8月23日（周六）| 伊宁 ✈ 兰州</h2>
+  <p class="section-desc"><span class="route-badge">✈ 返程第一段：伊宁 → 兰州中川</span></p>
+
+  <div class="highlight-card">
+    <h3>✈ 返程日 — 今日重点</h3>
+    <div class="highlight-sub">💡 飞回兰州，还车退房，吃一碗正宗兰州牛肉面告别西北</div>
+    <div class="hl-section">
+      <div class="hl-section-title">⚠️ Tips</div>
+      <div class="hl-tips">① 退房前检查随身物品，特别是证件和充电器 ② 租车还车前加满油，拍照留证 ③ 预留1小时到伊宁机场（机场较小） ④ 今晚住兰州西站附近，方便明天赶高铁 ⑤ 来碗正宗兰州牛肉面做告别——推荐马子禄/白建强/磨沟沿</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>今日行程</h3>
+    <div class="day-plan">
+      <div class="stop time-label">🌅 上午 — 伊宁 → 机场</div>
+      <div class="stop">根据航班时间安排出发。预留1小时到伊宁机场。还车（提前加满油）。</div>
+      <div class="stop time-label">✈ — 伊宁 → 兰州</div>
+      <div class="stop">飞行约3h40m，¥800-1,500/人。抵达兰州中川机场。</div>
+      <div class="stop time-label">🏨 下午/傍晚 — 入住兰州酒店</div>
+      <div class="stop">推荐中川机场附近或兰州西站附近酒店，方便第二天赶高铁。人均¥100-140。</div>
+      <div class="stop time-label">🍜 晚餐 — 兰州最后一餐</div>
+      <div class="stop">来一碗正宗兰州牛肉面告别西北！</div>
+      <div class="stop time-label">🎒 — 整理行李，早休息</div>
+      <div class="stop">明天G674高铁回京，全程近10小时，养足精神。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>💰 本日预算</h3>
+    <table>
+      <tr><td>机票</td><td>¥800–1,500 × 5 = ¥4,000–7,500</td></tr>
+      <tr><td>住宿</td><td>¥500–700</td></tr>
+      <tr><td>餐饮</td><td>¥200–300</td></tr>
+      <tr><td style="font-weight:700;">合计</td><td style="font-weight:700;">约 ¥4,700–8,500</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ======== DAY 11 ======== -->
+<section class="section" id="sec-day11">
+  <h2 class="section-title">Day 11 · 8月24日（周日）| 兰州 🚄 北京</h2>
+  <p class="section-desc"><span class="route-badge">🚄 G674 兰州西 → 北京西 约10h</span></p>
+
+  <div class="highlight-card">
+    <h3>🚄 归家 — 今日重点</h3>
+    <div class="highlight-sub">💡 G674高铁一路向东，途经定西、天水、西安，在车上回味11天的天山秘境之旅</div>
+    <div class="hl-section">
+      <div class="hl-section-title">⚠️ Tips</div>
+      <div class="hl-tips">① 提前1小时到兰州西站，留足取票/安检时间 ② 高铁全程约10小时，备好充电宝、零食和颈枕 ③ 二等座约¥600/人，提前30天购票 ④ 在车上整理照片、写游记、回味旅程 ⑤ 到达北京西站后别忘了检查行李是否齐全</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>今日行程</h3>
+    <div class="day-plan">
+      <div class="stop time-label">🌅 上午 — 退房去兰州西站</div>
+      <div class="stop">根据G674发车时间提前1小时到达。兰州西站附近吃个早餐。</div>
+      <div class="stop time-label">🚄 G674 兰州西 → 北京西</div>
+      <div class="stop">全程约10小时，途经定西、天水、西安等。二等座约¥600/人。在车上休息、整理照片、回味旅程。</div>
+      <div class="stop time-label">🏠 晚上 — 抵达北京西站</div>
+      <div class="stop">行程圆满结束！🎉</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>💰 本日预算</h3>
+    <table>
+      <tr><td>高铁</td><td>¥600 × 5 = ¥3,000</td></tr>
+      <tr><td>餐饮</td><td>¥150–250</td></tr>
+      <tr><td style="font-weight:700;">合计</td><td style="font-weight:700;">约 ¥3,150–3,250</td></tr>
+    </table>
+  </div>
+</section>
+
+</div><!-- /container -->
+
+<!-- FOOTER QUICK SUMMARY -->
+<div class="container" style="padding-bottom:48px;">
+  <hr class="divider">
+  <div class="card" style="text-align:center;background:linear-gradient(135deg,#f0fdf4,#e8f5e9);border:none;">
+    <h3 style="color:var(--primary);">🎉 行程圆满 · 天山秘境11日</h3>
+    <p style="font-size:14px;color:var(--text-light);margin:8px 0;">北京 ⇢ 兰州 ⇢ 伊昭公路 ⇢ 夏塔古道 ⇢ 特克斯 ⇢ 恰甫其海 ⇢ 库尔德宁 ⇢ 赛里木湖 ⇢ 伊宁 ⇢ 北京</p>
+    <p style="font-size:13px;color:#999;">
+      5人总预算约 ¥27,200–36,600 · 人均约 ¥5,440–7,320<br>
+      以上信息基于公开资料整理，实际票价、预约政策以各景区/平台官方发布为准。
+    </p>
+  </div>
+</div>
+
+<script>
+// Tab switching
+document.querySelectorAll('#tabBar button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#tabBar button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const target = btn.dataset.tab;
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    const sec = document.getElementById('sec-' + target);
+    if (sec) sec.classList.add('active');
+    // Scroll to top
+    window.scrollTo({ top: 180, behavior: 'smooth' });
+  });
+});
+
+// Handle URL hash for direct linking
+function handleHash() {
+  const hash = window.location.hash.replace('#', '');
+  if (hash) {
+    const btn = document.querySelector(`[data-tab="${hash}"]`);
+    if (btn) btn.click();
+    else {
+      // Try overview
+      document.querySelector('[data-tab="overview"]').click();
+    }
+  }
+}
+window.addEventListener('hashchange', handleHash);
+handleHash();
+</script>
+
+</body>
+</html>
